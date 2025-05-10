@@ -15,7 +15,7 @@ def preprocess_text(text):
 # Load the dataset
 @st.cache_data
 def load_data():
-    file_path = r"C:\Users\yp104\Desktop\t\archive\Ecommerce_FAQ_Chatbot_dataset.json"
+    file_path = r""
     df = pd.read_json(file_path)
     df['question'] = df['questions'].apply(lambda x: x.get('question', ''))
     df['answer'] = df['questions'].apply(lambda x: x.get('answer', ''))
