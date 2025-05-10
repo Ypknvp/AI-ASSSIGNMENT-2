@@ -1,9 +1,7 @@
 Sentiment Analysis Web App with Streamlit
-Description:
-This Streamlit app performs sentiment analysis on user input. The app preprocesses text, trains a Logistic Regression model using TF-IDF vectorization, and predicts whether the sentiment of a given text is positive or negative. It provides a feature for users to enter individual or multiple sentences to check their sentiment.
 
-Image Description:
-A user interface with:
+This Streamlit app performs sentiment analysis on user input. The app preprocesses text, trains a Logistic Regression model using TF-IDF vectorization, and predicts whether the sentiment of a given text is positive or negative. It provides a feature for users to enter individual or multiple sentences to check their sentiment.
+A user interface with
 A sidebar allowing users to choose between sample data or uploading a file.
 A section showing a preview of the sample data.
 A model training progress bar.
@@ -12,10 +10,7 @@ A text input area for sentiment analysis, with a submit button and the predicted
 
 
 Temple Visitors Voice Assistant with Speech Recognition and Text-to-Speech
-Description:
 This Streamlit app acts as a voice assistant for visitors to a temple. It listens to voice commands using speech recognition and responds with text-to-speech. The assistant provides information about temple hours, location, dress codes, and other FAQs. It uses pyttsx3 for speech synthesis and speech_recognition for voice input.
-
-Image Description:
 A user interface with:
 A microphone button to activate speech recognition.
 A text area where the assistant’s response is displayed.
@@ -26,11 +21,8 @@ A section showing the assistant’s spoken responses and the ability to interact
 
 E-commerce FAQ Chatbot with Cosine Similarity
 
-Description:
 This chatbot application answers e-commerce related questions by matching user queries to a pre-existing FAQ dataset. The app uses a TF-IDF vectorizer and cosine similarity to find the best answer to a user’s question. It provides relevant answers based on a JSON dataset of frequently asked questions.
-
-Image Description:
-A clean UI showing:
+A clean UI showing
 A text input box where users can type their questions.
 A chatbot response section displaying answers.
 A list of common FAQ topics or a "How can I help you today?" prompt.
