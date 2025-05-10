@@ -1,0 +1,64 @@
+import streamlit as st
+import speech_recognition as sr
+import pyttsx3
+from datetime import datetime
+def speak(text):
+    st.text_area("Assistant says:", value=text, height=100)
+    engine = pyttsx3.init()
+    engine.setProperty("rate", 150)
+    engine.setProperty('voice', engine.getProperty('voices')[1].id)  # Female voice
+    engine.say(text)
+    engine.runAndWait()
+    engine.stop()
+def listen():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        st.info("🎙️ Listening... Speak now.")
+        audio = r.listen(source, phrase_time_limit=5)
+        try:
+            text = r.recognize_google(audio)
+            st.success(f"You said: {text}")
+            return text
+        except sr.UnknownValueError:
+            st.error("❌ Sorry, I could not understand.")
+            return ""
+        except sr.RequestError:
+            st.error("❌ Speech recognition service unavailable.")
+            return ""
+
+def process(text):
+    text = text.lower()
+    if "hello" in text or "hi" in text:
+        return "Hello! Welcome to the Temple Visitors Assistant."
+    elif "time" in text:
+        return f"The current time is {datetime.now().strftime('%H:%M:%S')}"
+    elif "thank you" in text:
+        return "You're welcome!"
+    elif "temple open" in text:
+        return "The temple opens at 6 AM every day."
+    elif "temple close" in text:
+        return "The temple closes at 8 PM every day."
+    elif "where is the temple" in text or "location" in text:
+        return "The temple is located at Main Street, Chennai."
+    elif "dress code" in text:
+        return "Yes, traditional attire is recommended."
+    elif "mobile phone" in text:
+        return "Mobile phones are not allowed inside the temple."
+    elif "parking" in text:
+        return "Yes, parking is available near the entrance."
+    elif "photo" in text or "photograph" in text:
+        return "Photography is not allowed inside the temple."
+    elif "special pooja" in text or "event" in text:
+        return "Yes, there is a special pooja at 7 PM today."
+    else:
+        return "Sorry, I didn't understand that."
+
+st.set_page_config(page_title="Temple Voice Assistant", layout="centered")
+st.title("🎤 Temple Visitors Voice Assistant")
+st.markdown("Click the button and speak your question.")
+
+if st.button("Start Listening"):
+    query = listen()
+    if query:
+        response = process(query)
+        speak(response)
